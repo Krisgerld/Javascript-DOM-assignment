@@ -20,7 +20,6 @@
       margin-bottom: 6px;
     }
 
-    /* Task counter display */
     #task-count {
       font-size: 14px;
       color: #e63946;
@@ -28,7 +27,6 @@
       margin-bottom: 20px;
     }
 
-    /* Input and button side by side */
     .input-area {
       display: flex;
       gap: 10px;
@@ -61,14 +59,12 @@
       background-color: #c0392b;
     }
 
-    /* The list itself */
     #task-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    /* Each list item */
     .task-item {
       background-color: white;
       border: 1px solid #ddd;
@@ -80,14 +76,12 @@
       cursor: pointer;
     }
 
-    /* Completed task styling - toggled by JavaScript */
     .completed {
       text-decoration: line-through;
       color: #aaa;
       background-color: #f9f9f9;
     }
 
-    /* Delete button inside each task */
     .delete-button {
       background-color: #0d0d0d;
       color: white;
@@ -112,16 +106,13 @@
 
   <h1>My To-Do List</h1>
 
-  <!-- BONUS: Task counter -->
   <p id="task-count">Total Tasks: 0</p>
 
-  <!-- Input area -->
   <div class="input-area">
     <input type="text" id="task-input" placeholder="Enter a new task..." />
     <button id="add-button">Add</button>
   </div>
 
-  <!-- Empty list - JavaScript will fill this -->
   <ul id="task-list"></ul>
 
 

@@ -25,7 +25,7 @@
       margin-bottom: 30px;
     }
 
-    /* Outer div - the biggest box */
+
     #outer-div {
       background-color: #d4e6f1;
       padding: 40px;
@@ -34,7 +34,6 @@
       cursor: pointer;
     }
 
-    /* Middle div - inside the outer */
     #middle-div {
       background-color: #a9cce3;
       padding: 40px;
@@ -42,7 +41,6 @@
       cursor: pointer;
     }
 
-    /* Inner div - the smallest box inside */
     #inner-div {
       background-color: #5dade2;
       padding: 40px;
@@ -52,7 +50,6 @@
       cursor: pointer;
     }
 
-    /* Labels on each box */
     .label {
       font-size: 13px;
       font-weight: bold;
@@ -67,7 +64,6 @@
       color: white;
     }
 
-    /* Stop Propagation button */
     #stop-button {
       background-color: #e63946;
       color: white;
@@ -84,7 +80,6 @@
       background-color: #c0392b;
     }
 
-    /* Log area that shows what was clicked */
     #log-area {
       background-color: #0d0d0d;
       color: #00ff00;
@@ -108,7 +103,6 @@
   <h1>Event Propagation Demo</h1>
   <p>Click on any box below and watch the console log. Event bubbling means when you click the inner box, the click travels UP through all the parent boxes too.</p>
 
-  <!-- Nested div structure -->
   <div id="outer-div">
     <span class="label">Outer Div (clicks bubble here last)</span>
 
@@ -123,10 +117,10 @@
     </div>
   </div>
 
-  <!-- Button that stops propagation -->
+
   <button id="stop-button">Click to See stopPropagation()</button>
 
-  <!-- Log area on the page -->
+  
   <div id="log-area">
     <p>// Click a box above to see event bubbling...</p>
   </div>
