@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1 - DOM Explorer</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #0d0d0d;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    /* Style for the new paragraph added by JavaScript */
+    .new-paragraph {
+      background-color: #fff;
+      border-left: 4px solid #e63946;
+      padding: 12px;
+      margin-top: 16px;
+      color: #0d0d0d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- My HTML Elements -->
+  <h1 id="main-heading">Welcome to My Page</h1>
+
+  <p id="paragraph-1">
+    This is the first paragraph. It talks about web development.
+  </p>
+
+  <p id="paragraph-2">
+    This is the second paragraph. It talks about JavaScript and the DOM.
+  </p>
+
+  <button id="main-button">Click Me to Add a Paragraph</button>
+
+
+  <script>
+
+    // a. Select each element and log it to the console
+
+    // Selecting each element by their ID
+    let heading = document.getElementById("main-heading");
+    let paragraph1 = document.getElementById("paragraph-1");
+    let paragraph2 = document.getElementById("paragraph-2");
+    let button = document.getElementById("main-button");
+
+    // Logging each element to the console
+    console.log("Heading:", heading);
+    console.log("Paragraph 1:", paragraph1);
+    console.log("Paragraph 2:", paragraph2);
+    console.log("Button:", button);
+
+
+    // b. Change the heading text when the page loads
+
+    // This runs as soon as the page loads
+    heading.textContent = "Hello! The DOM Changed This Heading!";
+
+
+    // c. Add a new paragraph when the button is clicked
+
+    button.addEventListener("click", function() {
+
+      // Create a brand new paragraph element
+      let newParagraph = document.createElement("p");
+
+      // Add text to the new paragraph
+      newParagraph.textContent = "This is a NEW paragraph added by JavaScript when you clicked the button!";
+
+      // Add a class to style it
+      newParagraph.classList.add("new-paragraph");
+
+      // Add the new paragraph to the page (inside the body)
+      document.body.appendChild(newParagraph);
+
+      // Log to console that it was added
+      console.log("New paragraph added to the page!");
+
+    });
+
+  </script>
+
+</body>
+
+</html>

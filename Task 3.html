@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3 - Event Propagation Demo</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #0d0d0d;
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* Outer div - the biggest box */
+    #outer-div {
+      background-color: #d4e6f1;
+      padding: 40px;
+      border: 3px solid #2980b9;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    /* Middle div - inside the outer */
+    #middle-div {
+      background-color: #a9cce3;
+      padding: 40px;
+      border: 3px solid #1a6fa3;
+      cursor: pointer;
+    }
+
+    /* Inner div - the smallest box inside */
+    #inner-div {
+      background-color: #5dade2;
+      padding: 40px;
+      border: 3px solid #1565c0;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Labels on each box */
+    .label {
+      font-size: 13px;
+      font-weight: bold;
+      color: #0d0d0d;
+      margin-bottom: 10px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #inner-div .label {
+      color: white;
+    }
+
+    /* Stop Propagation button */
+    #stop-button {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 30px;
+      font-weight: bold;
+      display: block;
+    }
+
+    #stop-button:hover {
+      background-color: #c0392b;
+    }
+
+    /* Log area that shows what was clicked */
+    #log-area {
+      background-color: #0d0d0d;
+      color: #00ff00;
+      padding: 16px;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 14px;
+      min-height: 100px;
+      border-radius: 4px;
+    }
+
+    #log-area p {
+      color: #00ff00;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Event Propagation Demo</h1>
+  <p>Click on any box below and watch the console log. Event bubbling means when you click the inner box, the click travels UP through all the parent boxes too.</p>
+
+  <!-- Nested div structure -->
+  <div id="outer-div">
+    <span class="label">Outer Div (clicks bubble here last)</span>
+
+    <div id="middle-div">
+      <span class="label">Middle Div (clicks bubble here second)</span>
+
+      <div id="inner-div">
+        <span class="label">Inner Div (click starts here first)</span>
+        Click Me!
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Button that stops propagation -->
+  <button id="stop-button">Click to See stopPropagation()</button>
+
+  <!-- Log area on the page -->
+  <div id="log-area">
+    <p>// Click a box above to see event bubbling...</p>
+  </div>
+
+
+  <script>
+
+    // Select the log area to show messages on the page
+    let logArea = document.getElementById("log-area");
+
+
+    
+    // Function to add a message to the log area
+    function addLog(message) {
+      let logLine = document.createElement("p");
+      logLine.textContent = "> " + message;
+      logArea.appendChild(logLine);
+      console.log(message);
+    }
+
+
+
+    // Inner div - the click starts here FIRST
+    document.getElementById("inner-div").addEventListener("click", function() {
+      addLog("1. INNER DIV was clicked - event starts here");
+    });
+
+    // Middle div - the click bubbles here SECOND
+    document.getElementById("middle-div").addEventListener("click", function() {
+      addLog("2. MIDDLE DIV received the bubbled click event");
+    });
+
+    // Outer div - the click bubbles here LAST
+    document.getElementById("outer-div").addEventListener("click", function() {
+      addLog("3. OUTER DIV received the bubbled click event");
+      addLog("--- Bubbling complete ---");
+    });
+
+
+    
+    // stopPropagation() Demo
+    document.getElementById("stop-button").addEventListener("click", function(event) {
+
+      // This stops the click from travelling up to any parent elements
+      event.stopPropagation();
+
+      // Clear the log area first
+      logArea.innerHTML = "";
+
+      addLog("Stop button clicked!");
+      addLog("stopPropagation() was called.");
+      addLog("The click did NOT bubble up to any parent divs.");
+      addLog("Without stopPropagation(), the outer divs would also fire.");
+
+    });
+
+  </script>
+
+</body>
+
+</html>
